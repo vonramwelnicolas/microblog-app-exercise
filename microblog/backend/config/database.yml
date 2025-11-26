@@ -25,3 +25,9 @@ cable:
   database: <%= ENV.fetch("DB_NAME", "microblog_production") %>
   # Use the same database for cable in production
   sslmode: require
+
+queue:
+  <<: *default
+  database: <%= ENV.fetch("DB_NAME", "microblog_production") %>
+  # Use the same database for queue in production
+  sslmode: require
