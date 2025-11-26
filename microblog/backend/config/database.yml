@@ -16,5 +16,5 @@ test:
 
 production:
   <<: *default
-  database: microblog_production
-  # Set DB_HOST/DB_USERNAME/DB_PASSWORD via environment variables in production
+  database: <%= ENV.fetch("DB_NAME", "microblog_production") %>
+  # Set DB_HOST/DB_USERNAME/DB_PASSWORD via AWS Secrets Manager in production
