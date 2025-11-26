@@ -18,3 +18,4 @@ production:
   <<: *default
   database: <%= ENV.fetch("DB_NAME", "microblog_production") %>
   # Set DB_HOST/DB_USERNAME/DB_PASSWORD via AWS Secrets Manager in production
+  sslmode: prefer
