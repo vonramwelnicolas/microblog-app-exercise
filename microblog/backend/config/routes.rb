@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root 'welcome#index'  # Add this line for the root route
-  
   namespace :api do
     get 'arbitrary', to: 'arbitrary#show'
     resources :users, only: [:create, :index]
@@ -11,4 +9,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # Serve React app for all other routes (catch-all)
+  get '*path', to: 'welcome#index', constraints: ->(request) { !request.path.start_with?('/api') }
+  root 'welcome#index'
 end
